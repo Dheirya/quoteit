@@ -149,6 +149,9 @@
             const params = new Proxy(new URLSearchParams(window.location.search), {
                 get: (searchParams, prop) => searchParams.get(prop),
             });
+            if(!params.quote){
+                window.location.href = "https://quoteit-seven.vercel.app/random.html";
+            }
             document.getElementById("quote").innerHTML = params.quote;
             document.getElementById("author").innerHTML = params.author;
             title = params.quote;
