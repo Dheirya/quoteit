@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="QuoteIT" />
+        <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/25/25672.png" />
+        <meta name="twitter:creator" content="Dheirya Tyagi" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,800,800i" rel="stylesheet" />
+        <style>
+            body {
+                background-color: #ccc;
+            }
+            .blockquote-wrapper {
+                display: flex;
+                height: 100vh;
+                padding: 0 20px;
+            }
+            .blockquote {
+                position: relative;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 800;
+                color: #ffffff;
+                padding: 30px 0;
+                width: 100%;
+                max-width: 75vw;
+                z-index: 1;
+                margin: 80px auto;
+                align-self: center;
+                border-top: solid 1px;
+                border-bottom: solid 1px;
+                background-color: rgba(255, 255, 255, 0.95);
+                padding: 50px;
+                border-radius: 10px;
+            }
+            .blockquote h1 {
+                position: relative;
+                color: rgba(35, 35, 35, 1);
+                font-size: 40px;
+                font-weight: 800;
+                line-height: 1;
+                margin: 0;
+            }
+            .blockquote:after {
+                position: absolute;
+                content: "”";
+                color: rgba(50, 50, 50, 1);
+                font-size: 10rem;
+                line-height: 0;
+                bottom: -33px;
+                right: 30px;
+            }
+            @media all and (min-width: 600px) {
+                .blockquote h1 {
+                    font-size: 60px;
+                }
+            }
+            .blockquote h4 {
+                position: relative;
+                color: #292a2b;
+                font-size: 1.4rem;
+                font-weight: normal;
+                line-height: 1;
+                margin: 0;
+                padding-top: 20px;
+                z-index: 1;
+            }
+            #credit-icon1 {
+                position: fixed;
+                width: 150px;
+                height: 25px;
+                background: #378e61;
+                bottom: 30px;
+                left: -35px;
+                text-align: center;
+                font-size: 12px;
+                font-family: sans-serif;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: #fff;
+                line-height: 27px;
+                transform: rotate(45deg);
+            }
+            #credit-icon2 {
+                position: fixed;
+                width: 80px;
+                height: 25px;
+                background: #378e61;
+                bottom: 8px;
+                left: -20px;
+                text-align: center;
+                font-size: 12px;
+                font-family: sans-serif;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: #fff;
+                line-height: 27px;
+                transform: rotate(45deg);
+            }
+            #credit-icon3 {
+                position: fixed;
+                width: 210px;
+                height: 25px;
+                background: #378e61;
+                bottom: 50px;
+                left: -43px;
+                text-align: center;
+                font-size: 12px;
+                font-family: sans-serif;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: #fff;
+                line-height: 27px;
+                transform: rotate(45deg);
+            }
+            #me-icon4 {
+                position: fixed;
+                width: 120px;
+                height: 25px;
+                background: #378e61;
+                bottom: 20px;
+                right: -28px;
+                text-align: center;
+                font-size: 12px;
+                font-family: sans-serif;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: #fff;
+                line-height: 27px;
+                transform: rotate(-45deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="blockquote-wrapper">
+            <div class="blockquote">
+                <h1 id="quote">Quote</h1>
+                <h4>
+                    <i>&mdash; <span id="author">Author</span></i>
+                </h4>
+            </div>
+        </div>
+        <div id="credit-icon1"><a title="Quotes from Quoteable API by Luke Peavey" href="https://github.com/lukePeavey/quotable" target="_blank" style="color: white; text-decoration: none;">Quoteable API</a></div>
+        <div id="credit-icon2"><a title="Images from Picsum by David Marby & Nijiko Yonskai" href="https://picsum.photos" target="_blank" style="color: white; text-decoration: none;">Picsum</a></div>
+        <div id="credit-icon3"><a title="Page template from a Codepen Template by Juan Pablo" href="https://codepen.io/jupago/pen/dwZKbM" target="_blank" style="color: white; text-decoration: none;">Quote Page Template</a></div>
+        <div id="me-icon4"><a title="Website by Dheirya Tyagi" href="https://bit.ly/dheirya" target="_blank" style="color: white; text-decoration: none;">By: Dheirya</a></div>
+        <script>
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            document.getElementById("quote").innerHTML = params.quote;
+            document.getElementById("author").innerHTML = params.author;
+            title = params.quote;
+            desc = "Quote: " + params.quote + " ~ " + params.author;
+            document.title = title;
+            var meta = document.createElement("meta");
+            meta.name = "title";
+            meta.content = title;
+            document.getElementsByTagName("head")[0].appendChild(meta);
+            var meta = document.createElement("meta");
+            meta.name = "description";
+            meta.content = desc;
+            document.getElementsByTagName("head")[0].appendChild(meta);
+            var meta = document.createElement("meta");
+            meta.name = "twitter:title";
+            meta.content = title;
+            document.getElementsByTagName("head")[0].appendChild(meta);
+            var meta = document.createElement("meta");
+            meta.name = "twitter:description";
+            meta.content = desc;
+            document.getElementsByTagName("head")[0].appendChild(meta);
+            document.body.style.backgroundImage = 'url("https://picsum.photos/' + window.screen.width + "/" + window.screen.height + '")';
+        </script>
+    </body>
+</html>
